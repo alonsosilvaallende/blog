@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>blog - “Observatorio de sueldos en Chile”</title>
+<title>blog - Observatorio de sueldos en Chile</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">“Observatorio de sueldos en Chile”</h1>
+      <h1 class="title">Observatorio de sueldos en Chile</h1>
                       </div>
   </div>
     
@@ -165,29 +165,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<blockquote class="blockquote">
-<p>Observatorio de sueldos en Chile</p>
-</blockquote>
-<ul>
-<li>toc: true</li>
-<li>badges: true</li>
-<li>comments: true</li>
-<li>author: Alonso Silva Allende</li>
-<li>categories: [jupyter]</li>
-<li>image: images/diagram.png</li>
-</ul>
-<p>Los datos de sueldos en Chile se pueden obtener de la [encuesta suplementaria de ingresos (ESI)] (https://www.ine.gob.cl/estadisticas/sociales/ingresos-y-gastos/encuesta-suplementaria-de-ingresos). La última ESI disponible es la del año 2021 y se puede descargar <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/csv_esi/2021/esi-2021---personas.csv?sfvrsn=d03ae552_4&amp;download=true">aquí</a>.</p>
+<section id="sueldos-en-chile" class="level1">
+<h1>Sueldos en Chile</h1>
+<p>Los datos de sueldos en Chile se pueden obtener de la <a href="https://www.ine.gob.cl/estadisticas/sociales/ingresos-y-gastos/encuesta-suplementaria-de-ingresos">encuesta suplementaria de ingresos (ESI)</a>. La última ESI disponible es la del año 2021 y se puede descargar <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/csv_esi/2021/esi-2021---personas.csv?sfvrsn=d03ae552_4&amp;download=true">aquí</a>.</p>
 <p>Una vez que hemos descargado los datos podemos acceder a ellos:</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#collapse-hide</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown, display_html, HTML</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># download the data</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>data_raw <span class="op">=</span> pd.read_csv(<span class="st">"esi-2021---personas.csv"</span>, encoding<span class="op">=</span><span class="st">"ISO-8859-1"</span>, low_memory<span class="op">=</span><span class="va">False</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>data_raw.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># download the data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data_raw <span class="op">=</span> pd.read_csv(<span class="st">"esi-2021---personas.csv"</span>, encoding<span class="op">=</span><span class="st">"ISO-8859-1"</span>, low_memory<span class="op">=</span><span class="va">False</span>, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data_raw.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -301,51 +292,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>La encuesta considera sólo las personas ocupadas con más de 1 mes en el empleo actual. Podemos acceder al <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/manual-y-gu%C3%ADa-de-variables/2020/personas-esi-2020.pdf?sfvrsn=f196cb4e_4">Manual y Guía de Variables ESI</a> y ver que la variable que nos interesa es <code>ocup_ref</code> donde el valor 1 corresponde a los “Ocupados con más de 1 mes en el empleo actual”.</p>
 <div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data_raw[data_raw[<span class="st">"ocup_ref"</span>] <span class="op">==</span> <span class="dv">1</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Del <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/manual-y-gu%C3%ADa-de-variables/2020/personas-esi-2020.pdf?sfvrsn=f196cb4e_4">Manual y Guía de Variables ESI</a>, vemos que debemos considerar el factor de expansión que corresponde a la variable <code>fact_cal_esi</code>. De esta forma encontramos que el número de personas ocupadas es 8.243.580.</p>
 <div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n_ocupados <span class="op">=</span> data[<span class="st">'fact_cal_esi'</span>].<span class="bu">sum</span>()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Número de personas ocupadas: </span><span class="sc">{</span>n_ocupados<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Número de personas ocupadas: 8.243.580</code></pre>
 </div>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Screenshot-2023-04-21.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Sitio INE</figcaption>
+</figure>
+</div>
 <p>Esto coincide con el valor entregado por INE por lo que vamos por buen camino :-)</p>
 <p>Para calcular el sueldo promedio, según el Manual y Guía de Variables ESI, debemos utilizar la variable <code>ing_t_p</code> que corresponde a “Ingresos del trabajo principal” y debemos utilizar nuevamente el factor de expansión.</p>
 <div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ingreso_promedio(data):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    n_ocupados <span class="op">=</span> data[<span class="st">'fact_cal_esi'</span>].<span class="bu">sum</span>()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    promedio <span class="op">=</span> (data[<span class="st">'ing_t_p'</span>]<span class="op">*</span>data[<span class="st">'fact_cal_esi'</span>]).<span class="bu">sum</span>()<span class="op">/</span>n_ocupados</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">int</span>(np.<span class="bu">round</span>(promedio))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso promedio mensual: $</span><span class="sc">{</span>ingreso_promedio(data)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ingreso promedio mensual: $681.039</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="6">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ocupados_hombres <span class="op">=</span> data[data[<span class="st">'sexo'</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ocupadas_mujeres <span class="op">=</span> data[data[<span class="st">'sexo'</span>] <span class="op">==</span> <span class="dv">2</span>]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Porcentaje de hombres: </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>ocupados_hombres[<span class="st">'fact_cal_esi'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="op">/</span>n_ocupados<span class="sc">:.1f}</span><span class="ss">%"</span>)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Porcentaje de mujeres: </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>ocupadas_mujeres[<span class="st">'fact_cal_esi'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="op">/</span>n_ocupados<span class="sc">:.1f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Porcentaje de hombres: 58.2%
 Porcentaje de mujeres: 41.8%</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="7">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso promedio mensual para hombres: $</span><span class="sc">{</span>ingreso_promedio(ocupados_hombres)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso promedio mensual para mujeres: $</span><span class="sc">{</span>ingreso_promedio(ocupadas_mujeres)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ingreso promedio mensual para hombres: $749.046
 Ingreso promedio mensual para mujeres: $586.178</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="8">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'sexo'</span>] <span class="op">=</span> data[<span class="st">'sexo'</span>].<span class="bu">map</span>({<span class="dv">1</span>: <span class="st">'hombre'</span>, <span class="dv">2</span>: <span class="st">'mujer'</span>})</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>data.groupby(<span class="st">'sexo'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(np.<span class="bu">round</span>(ingreso_promedio(x))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>sexo
 hombre    749046
@@ -354,6 +372,8 @@ dtype: int64</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>map_regiones <span class="op">=</span> {</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">"Tarapacá"</span>,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: <span class="st">"Antofagasta"</span>,</span>
@@ -373,12 +393,19 @@ dtype: int64</code></pre>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="dv">16</span>: <span class="st">"Ñuble"</span>,</span>
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="dv">99</span>: <span class="st">"Región no identificada"</span></span>
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <div class="cell" data-execution_count="12">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"region"</span>] <span class="op">=</span> data[<span class="st">"region"</span>].<span class="bu">map</span>(map_regiones)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <div class="cell" data-execution_count="13">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data.groupby(<span class="st">'region'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(np.<span class="bu">round</span>(ingreso_promedio(x))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>region
 Antofagasta           765318
@@ -403,6 +430,7 @@ dtype: int64</code></pre>
 <p>Espero que este post ayude a clarificar dudas respecto al porqué utilizar la tasa de mortalidad ajustada y el cálculo de ésta. Otras dudas o sugerencias pueden hacerlas enviándome un mensaje en Twitter: <a href="https://twitter.com/alonsosilva">alonsosilva</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
