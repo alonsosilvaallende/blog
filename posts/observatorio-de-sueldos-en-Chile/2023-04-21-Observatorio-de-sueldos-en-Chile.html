@@ -425,12 +425,12 @@ Ingreso promedio en la Región de Ñuble: $543.780</code></pre>
 <div class="cell" data-execution_count="7">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ingreso_mediano(data):</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ingreso_percentil(data, percentil):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    n_ocupados <span class="op">=</span> data[<span class="st">'fact_cal_esi'</span>].<span class="bu">sum</span>()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    data_ordered <span class="op">=</span> data.sort_values(by<span class="op">=</span><span class="st">"ing_t_p"</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    mediano <span class="op">=</span> data_ordered[data_ordered[<span class="st">"fact_cal_esi"</span>].cumsum()<span class="op">&gt;</span>n_ocupados<span class="op">*</span><span class="fl">.5</span>][<span class="st">'ing_t_p'</span>].iloc[<span class="dv">0</span>]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    mediano <span class="op">=</span> data_ordered[data_ordered[<span class="st">"fact_cal_esi"</span>].cumsum()<span class="op">&gt;</span>n_ocupados<span class="op">*</span>percentil<span class="op">/</span><span class="fl">100.</span>][<span class="st">'ing_t_p'</span>].iloc[<span class="dv">0</span>]</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">int</span>(np.<span class="bu">round</span>(mediano))</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano mensual: $</span><span class="sc">{</span>ingreso_mediano(data)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano mensual: $</span><span class="sc">{</span>ingreso_percentil(data,<span class="dv">50</span>)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ingreso mediano mensual: $457.690</code></pre>
@@ -439,8 +439,8 @@ Ingreso promedio en la Región de Ñuble: $543.780</code></pre>
 <div class="cell" data-execution_count="8">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano para hombres: $</span><span class="sc">{</span>ingreso_mediano(ocupados_hombres)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano para mujeres: $</span><span class="sc">{</span>ingreso_mediano(ocupadas_mujeres)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano para hombres: $</span><span class="sc">{</span>ingreso_percentil(ocupados_hombres,<span class="dv">50</span>)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano para mujeres: $</span><span class="sc">{</span>ingreso_percentil(ocupadas_mujeres,<span class="dv">50</span>)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ingreso mediano para hombres: $500.000
@@ -450,7 +450,7 @@ Ingreso mediano para mujeres: $405.348</code></pre>
 <div class="cell" data-execution_count="9">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ocupados_regiones <span class="op">=</span> data.groupby(<span class="st">'region'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: ingreso_mediano(x))</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ocupados_regiones <span class="op">=</span> data.groupby(<span class="st">'region'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: ingreso_percentil(x,<span class="dv">50</span>))</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, value <span class="kw">in</span> ocupados_regiones.items():</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Ingreso mediano en la Región de </span><span class="sc">{</span>index<span class="sc">}</span><span class="ss">: $</span><span class="sc">{</span>value<span class="sc">:,}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -485,6 +485,29 @@ Ingreso mediano en la Región de Ñuble: $400.000</code></pre>
 <p><img src="ingreso-mediano-regiones.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Sitio INE ingreso mediano regiones</figcaption>
 </figure>
+</div>
+<p>De la misma forma como calculamos la mediana podemos calcular los sueldos para todos los percentiles.</p>
+<div class="cell" data-execution_count="10">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>PERCENTILES <span class="op">=</span> [ingreso_percentil(data,p) <span class="cf">for</span> p <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">8</span>))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>ax.plot([i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)], PERCENTILES)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([<span class="dv">10</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)])</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="ss">f"</span><span class="sc">{</span><span class="dv">10</span><span class="op">*</span>i<span class="sc">}</span><span class="ss">%"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)])</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">5</span>,<span class="dv">100</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Sueldo mensual"</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([<span class="dv">500_000</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>)])</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>ax.set_yticklabels([<span class="ss">f"</span><span class="sc">{</span><span class="dv">500_000</span><span class="op">*</span>i<span class="sc">:,}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>)])</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>,)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="2023-04-21-Observatorio-de-sueldos-en-Chile_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
 </div>
 <p>Dudas o sugerencias pueden hacerlas enviándome un mensaje en Twitter: <a href="https://twitter.com/alonsosilva">alonsosilva</a></p>
 
