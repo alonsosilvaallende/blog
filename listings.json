@@ -2,8 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/post-with-code/index.html",
-      "/posts/2023-04-21-Observatorio-de-sueldos-en-Chile.html",
+      "/posts/observatorio-de-sueldos-en-Chile/2023-04-21-Observatorio-de-sueldos-en-Chile.html",
       "/posts/welcome/index.html"
     ]
   }
