@@ -187,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Sueldos en Chile</h1>
 <p>Los datos de sueldos en Chile se pueden obtener de la <a href="https://www.ine.gob.cl/estadisticas/sociales/ingresos-y-gastos/encuesta-suplementaria-de-ingresos">encuesta suplementaria de ingresos (ESI)</a>. La última ESI disponible es la del año 2021 y se puede descargar <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/csv_esi/2021/esi-2021---personas.csv?sfvrsn=d03ae552_4&amp;download=true">aquí</a>.</p>
 <p>Una vez que hemos descargado los datos podemos acceder a ellos:</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:22:36.278428Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:22:30.168411Z&quot;}" data-execution_count="1">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -309,14 +309,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Para el análisis, la encuesta considera sólo las personas ocupadas con más de 1 mes en el empleo actual. Podemos acceder al <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/manual-y-gu%C3%ADa-de-variables/2020/personas-esi-2020.pdf?sfvrsn=f196cb4e_4">Manual y Guía de Variables ESI</a> y ver que la variable que nos interesa es <code>ocup_ref</code> donde el valor 1 corresponde a los “Ocupados con más de 1 mes en el empleo actual”.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:22:36.467002Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:22:36.284417Z&quot;}" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data_raw[data_raw[<span class="st">"ocup_ref"</span>] <span class="op">==</span> <span class="dv">1</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Del <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/manual-y-gu%C3%ADa-de-variables/2020/personas-esi-2020.pdf?sfvrsn=f196cb4e_4">Manual y Guía de Variables ESI</a>, vemos que debemos considerar el factor de expansión que corresponde a la variable <code>fact_cal_esi</code>. De esta forma encontramos que el número de personas ocupadas es 8.243.580.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:22:36.475550Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:22:36.470456Z&quot;}" data-execution_count="3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n_ocupados <span class="op">=</span> data[<span class="st">'fact_cal_esi'</span>].<span class="bu">sum</span>()</span>
@@ -327,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Para calcular el sueldo promedio, según el Manual y Guía de Variables ESI, debemos utilizar la variable <code>ing_t_p</code> que corresponde a “Ingresos del trabajo principal” y debemos utilizar nuevamente el factor de expansión.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:22:36.491130Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:22:36.481138Z&quot;}" data-execution_count="4">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ingreso_promedio(data):</span>
@@ -348,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>Para calcular el sueldo promedio, diferenciando por hombre/mujer, debemos utilizar la variable <code>sexo</code>.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:22:36.616080Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:22:36.495974Z&quot;}" data-execution_count="5">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'sexo'</span>] <span class="op">=</span> data[<span class="st">'sexo'</span>].<span class="bu">map</span>({<span class="dv">1</span>: <span class="st">'hombre'</span>, <span class="dv">2</span>: <span class="st">'mujer'</span>})</span>
@@ -368,7 +368,7 @@ Ingreso promedio mensual para mujeres: $586.178</code></pre>
 </div>
 <p>Nuevamente los valores coinciden con los valores entregados por el INE (ver slide arriba).</p>
 <p>Para calcular el sueldo promedio, diferenciando por región, debemos utilizar la variable <code>region</code>:</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:22:36.855573Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:22:36.639974Z&quot;}" data-execution_count="6">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>map_regiones <span class="op">=</span> {</span>
@@ -422,7 +422,7 @@ Ingreso promedio en la Región de Ñuble: $543.780</code></pre>
 </figure>
 </div>
 <p>Para calcular el ingreso mediano (la mitad de las personas ocupadas recibe ingresos menores o iguales al ingreso mediano) para la población total, hombres y mujeres, y por regiones:</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:22:37.169450Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:22:36.870698Z&quot;}" data-execution_count="7">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ingreso_percentil(data, percentil):</span>
@@ -436,7 +436,7 @@ Ingreso promedio en la Región de Ñuble: $543.780</code></pre>
 <pre><code>Ingreso mediano mensual: $457.690</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:22:37.465950Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:22:37.203746Z&quot;}" data-execution_count="8">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano para hombres: $</span><span class="sc">{</span>ingreso_percentil(ocupados_hombres,<span class="dv">50</span>)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span>
@@ -447,7 +447,7 @@ Ingreso promedio en la Región de Ñuble: $543.780</code></pre>
 Ingreso mediano para mujeres: $405.348</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:22:37.908702Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:22:37.491555Z&quot;}" data-execution_count="9">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ocupados_regiones <span class="op">=</span> data.groupby(<span class="st">'region'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: ingreso_percentil(x,<span class="dv">50</span>))</span>
@@ -487,27 +487,39 @@ Ingreso mediano en la Región de Ñuble: $400.000</code></pre>
 </figure>
 </div>
 <p>De la misma forma como calculamos la mediana podemos calcular los sueldos para todos los percentiles.</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-executetime="{&quot;start_time&quot;:&quot;2023-04-21T19:22:30.197Z&quot;}">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>PERCENTILES <span class="op">=</span> [ingreso_percentil(data,p) <span class="cf">for</span> p <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)]</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">8</span>))</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>ax.plot([i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)], PERCENTILES)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([<span class="dv">10</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)])</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([<span class="ss">f"</span><span class="sc">{</span><span class="dv">10</span><span class="op">*</span>i<span class="sc">}</span><span class="ss">%"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)])</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">5</span>,<span class="dv">100</span>)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Sueldo mensual"</span>)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([<span class="dv">500_000</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>)])</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>ax.set_yticklabels([<span class="ss">f"</span><span class="sc">{</span><span class="dv">500_000</span><span class="op">*</span>i<span class="sc">:,}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>)])</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>,)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter(x<span class="op">=</span>[<span class="fl">.01</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>,<span class="dv">100</span>)], y<span class="op">=</span>PERCENTILES[<span class="dv">5</span>:], hovertemplate<span class="op">=</span><span class="st">'Sueldo mensual: %{y:$,.0f}&lt;extra&gt;&lt;/extra&gt;'</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="ss">f'Distribución de ingresos'</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    yaxis_title <span class="op">=</span> <span class="st">'Sueldos mensuales'</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    xaxis <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        tickmode <span class="op">=</span> <span class="st">'array'</span>,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        tickvals <span class="op">=</span> [<span class="fl">.1</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>)],</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        ticktext <span class="op">=</span> [<span class="ss">f'</span><span class="sc">{</span><span class="dv">10</span><span class="op">*</span>i<span class="sc">}</span><span class="ss">%'</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">11</span>)]</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    xaxis_tickformat<span class="op">=</span><span class="st">',.0%'</span>,</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    yaxis_tickformat<span class="op">=</span><span class="st">',.0'</span>.replace(<span class="st">','</span>,<span class="st">','</span>),</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    yaxis <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>        tickmode <span class="op">=</span> <span class="st">'array'</span>,</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>        tickvals <span class="op">=</span> [<span class="dv">500_000</span><span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>)],</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>        ticktext <span class="op">=</span> [<span class="ss">f'$</span><span class="sc">{</span><span class="dv">500_000</span><span class="op">*</span>i<span class="sc">:,}</span><span class="ss">'</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>)]</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    showlegend<span class="op">=</span><span class="va">False</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    hovermode<span class="op">=</span><span class="st">"x"</span>,</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>    hoverlabel<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>        bgcolor<span class="op">=</span><span class="st">"white"</span>,</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<p><img src="2023-04-21-Observatorio-de-sueldos-en-Chile_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
-</div>
 </div>
 <p>Dudas o sugerencias pueden hacerlas enviándome un mensaje en Twitter: <a href="https://twitter.com/alonsosilva">alonsosilva</a></p>
 
