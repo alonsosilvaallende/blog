@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/2023-04-21-Observatorio-de-sueldos-en-Chile.html",
+    "href": "posts/2023-04-21-Observatorio-de-sueldos-en-Chile.html",
+    "title": "“Observatorio de sueldos en Chile”",
+    "section": "",
+    "text": "Observatorio de sueldos en Chile\n\n\ntoc: true\nbadges: true\ncomments: true\nauthor: Alonso Silva Allende\ncategories: [jupyter]\nimage: images/diagram.png\n\nLos datos de sueldos en Chile se pueden obtener de la [encuesta suplementaria de ingresos (ESI)] (https://www.ine.gob.cl/estadisticas/sociales/ingresos-y-gastos/encuesta-suplementaria-de-ingresos). La última ESI disponible es la del año 2021 y se puede descargar aquí.\nUna vez que hemos descargado los datos podemos acceder a ellos:\n\n#collapse-hide\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom IPython.display import display, Markdown, display_html, HTML\n\n# download the data\ndata_raw = pd.read_csv(\"esi-2021---personas.csv\", encoding=\"ISO-8859-1\", low_memory=False, index_col=0)\ndata_raw.head(3)\n\n\n\n\n\n\n\n\nidrph\nnro_linea\nedad\ntramo_edad\nsexo\nparentesco\ncurso\nnivel\ntermino_nivel\nestudia_actual\n...\nmes_central\nano_encuesta\nmes_encuesta\nregion\nr_p_c\nestrato\ntipo\nconglomerado\nid_identificacion\nhogar\n\n\n\n\n1\n14565\n4\n36\n5.0\n1\n4\n2\n4\n2\n2\n...\n11\n2021\n10\n8\n8205\n8200111\n1\n820510025\n102542.0\n1\n\n\n2\n24946\n2\n57\n9.0\n2\n3\n2\n10\n1\n2\n...\n11\n2021\n12\n13\n13123\n13291\n1\n13123000144956\n69274.0\n1\n\n\n3\n41897\n2\n64\n10.0\n2\n2\n3\n8\n1\n2\n...\n11\n2021\n10\n16\n16302\n16300120\n3\n1630220015\n80521.0\n1\n\n\n\n\n3 rows × 292 columns\n\n\n\nLa encuesta considera sólo las personas ocupadas con más de 1 mes en el empleo actual. Podemos acceder al Manual y Guía de Variables ESI y ver que la variable que nos interesa es ocup_ref donde el valor 1 corresponde a los “Ocupados con más de 1 mes en el empleo actual”.\n\ndata = data_raw[data_raw[\"ocup_ref\"] == 1].copy()\n\nDel Manual y Guía de Variables ESI, vemos que debemos considerar el factor de expansión que corresponde a la variable fact_cal_esi. De esta forma encontramos que el número de personas ocupadas es 8.243.580.\n\nn_ocupados = data['fact_cal_esi'].sum()\nprint(f\"Número de personas ocupadas: {n_ocupados:,.0f}\".replace(',','.'))\n\nNúmero de personas ocupadas: 8.243.580\n\n\nEsto coincide con el valor entregado por INE por lo que vamos por buen camino :-)\nPara calcular el sueldo promedio, según el Manual y Guía de Variables ESI, debemos utilizar la variable ing_t_p que corresponde a “Ingresos del trabajo principal” y debemos utilizar nuevamente el factor de expansión.\n\ndef ingreso_promedio(data):\n    n_ocupados = data['fact_cal_esi'].sum()\n    promedio = (data['ing_t_p']*data['fact_cal_esi']).sum()/n_ocupados\n    return int(np.round(promedio))\n\n\nprint(f\"Ingreso promedio mensual: ${ingreso_promedio(data):,.0f}\".replace(',','.'))\n\nIngreso promedio mensual: $681.039\n\n\n\nocupados_hombres = data[data['sexo'] == 1]\nocupadas_mujeres = data[data['sexo'] == 2]\nprint(f\"Porcentaje de hombres: {100*ocupados_hombres['fact_cal_esi'].sum()/n_ocupados:.1f}%\")\nprint(f\"Porcentaje de mujeres: {100*ocupadas_mujeres['fact_cal_esi'].sum()/n_ocupados:.1f}%\")\n\nPorcentaje de hombres: 58.2%\nPorcentaje de mujeres: 41.8%\n\n\n\nprint(f\"Ingreso promedio mensual para hombres: ${ingreso_promedio(ocupados_hombres):,.0f}\".replace(',','.'))\nprint(f\"Ingreso promedio mensual para mujeres: ${ingreso_promedio(ocupadas_mujeres):,.0f}\".replace(',','.'))\n\nIngreso promedio mensual para hombres: $749.046\nIngreso promedio mensual para mujeres: $586.178\n\n\n\ndata['sexo'] = data['sexo'].map({1: 'hombre', 2: 'mujer'})\ndata.groupby('sexo').apply(lambda x: int(np.round(ingreso_promedio(x))))\n\nsexo\nhombre    749046\nmujer     586178\ndtype: int64\n\n\n\nmap_regiones = {\n    1: \"Tarapacá\",\n    2: \"Antofagasta\",\n    3: \"Atacama\",\n    4: \"Coquimbo\",\n    5: \"Valparaíso\",\n    6: \"O'Higgins\",\n    7: \"Maule\",\n    8: \"Biobío\",\n    9: \"La Araucanía\",\n    10: \"Los Lagos\",\n    11: \"Aysén\",\n    12: \"Magallanes\",\n    13: \"Metropolitana\",\n    14: \"Los Ríos\",\n    15: \"Arica y Parinacota\",\n    16: \"Ñuble\",\n    99: \"Región no identificada\"\n}\n\n\ndata[\"region\"] = data[\"region\"].map(map_regiones)\n\n\ndata.groupby('region').apply(lambda x: int(np.round(ingreso_promedio(x))))\n\nregion\nAntofagasta           765318\nArica y Parinacota    582646\nAtacama               649946\nAysén                 748998\nBiobío                574946\nCoquimbo              603089\nLa Araucanía          533858\nLos Lagos             552445\nLos Ríos              576430\nMagallanes            844329\nMaule                 534284\nMetropolitana         780454\nO'Higgins             567721\nTarapacá              672109\nValparaíso            601402\nÑuble                 543780\ndtype: int64\n\n\nEspero que este post ayude a clarificar dudas respecto al porqué utilizar la tasa de mortalidad ajustada y el cálculo de ésta. Otras dudas o sugerencias pueden hacerlas enviándome un mensaje en Twitter: alonsosilva"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "blog",
+    "section": "",
+    "text": "“Observatorio de sueldos en Chile”\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nApr 21, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nApr 18, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  }
+]
