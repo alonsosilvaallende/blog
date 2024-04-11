@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.333">
+<meta name="generator" content="quarto-1.4.528">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,13 +96,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
         <script type="text/javascript">
         window.PlotlyConfig = {MathJaxConfig: 'local'};
@@ -180,10 +187,10 @@ var n,a=t("./lib/build-log"),i=t("./lib/epsilon"),o=t("./lib/intersecter"),s=t("
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">blog</span>
     </a>
@@ -195,23 +202,23 @@ var n,a=t("./lib/build-log"),i=t("./lib/epsilon"),o=t("./lib/intersecter"),s=t("
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -258,12 +265,13 @@ var n,a=t("./lib/build-log"),i=t("./lib/epsilon"),o=t("./lib/intersecter"),s=t("
 
 
 
+
 <section id="sueldos-en-chile" class="level1">
 <h1>Sueldos en Chile</h1>
 <p>Los datos de sueldos en Chile se pueden obtener de la <a href="https://www.ine.gob.cl/estadisticas/sociales/ingresos-y-gastos/encuesta-suplementaria-de-ingresos">encuesta suplementaria de ingresos (ESI)</a>. La última ESI disponible es la del año 2021 y se puede descargar <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/csv_esi/2021/esi-2021---personas.csv?sfvrsn=d03ae552_4&amp;download=true">aquí</a>.</p>
 <p>Una vez que hemos descargado los datos podemos acceder a ellos:</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.383488Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:00.141994Z&quot;}" data-execution_count="1">
-<details>
+<div id="cell-4" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.383488Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:00.141994Z&quot;}" data-execution_count="1">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -384,55 +392,55 @@ var n,a=t("./lib/build-log"),i=t("./lib/epsilon"),o=t("./lib/intersecter"),s=t("
 </div>
 </div>
 <p>Para el análisis, la encuesta considera sólo las personas ocupadas con más de 1 mes en el empleo actual. Podemos acceder al <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/manual-y-gu%C3%ADa-de-variables/2020/personas-esi-2020.pdf?sfvrsn=f196cb4e_4">Manual y Guía de Variables ESI</a> y ver que la variable que nos interesa es <code>ocup_ref</code> donde el valor 1 corresponde a los “Ocupados con más de 1 mes en el empleo actual”.</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.577470Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.386961Z&quot;}" data-execution_count="2">
-<details>
+<div id="cell-6" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.577470Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.386961Z&quot;}" data-execution_count="2">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data_raw[data_raw[<span class="st">"ocup_ref"</span>] <span class="op">==</span> <span class="dv">1</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Del <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/manual-y-gu%C3%ADa-de-variables/2020/personas-esi-2020.pdf?sfvrsn=f196cb4e_4">Manual y Guía de Variables ESI</a>, vemos que debemos considerar el factor de expansión que corresponde a la variable <code>fact_cal_esi</code>. De esta forma encontramos que el número de personas ocupadas es 8.243.580.</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.591883Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.584112Z&quot;}" data-execution_count="3">
-<details>
+<div id="cell-8" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.591883Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.584112Z&quot;}" data-execution_count="3">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n_ocupados <span class="op">=</span> data[<span class="st">'fact_cal_esi'</span>].<span class="bu">sum</span>()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Número de personas ocupadas: </span><span class="sc">{</span>n_ocupados<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Número de personas ocupadas: </span><span class="sc">{</span>n_ocupados<span class="sc">:,.0f}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Número de personas ocupadas: 8.243.580</code></pre>
 </div>
 </div>
 <p>Para calcular el sueldo promedio, según el Manual y Guía de Variables ESI, debemos utilizar la variable <code>ing_t_p</code> que corresponde a “Ingresos del trabajo principal” y debemos utilizar nuevamente el factor de expansión.</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.611903Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.597816Z&quot;}" data-execution_count="4">
-<details>
+<div id="cell-10" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.611903Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.597816Z&quot;}" data-execution_count="4">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ingreso_promedio(data):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    n_ocupados <span class="op">=</span> data[<span class="st">'fact_cal_esi'</span>].<span class="bu">sum</span>()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    promedio <span class="op">=</span> (data[<span class="st">'ing_t_p'</span>]<span class="op">*</span>data[<span class="st">'fact_cal_esi'</span>]).<span class="bu">sum</span>()<span class="op">/</span>n_ocupados</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">int</span>(np.<span class="bu">round</span>(promedio))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso promedio mensual: $</span><span class="sc">{</span>ingreso_promedio(data)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso promedio mensual: $</span><span class="sc">{</span>ingreso_promedio(data)<span class="sc">:,.0f}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ingreso promedio mensual: $681.039</code></pre>
 </div>
 </div>
 <p>Tanto el número de personas ocupadas como el ingreso promedio coinciden con los valores entregados por el <a href="http://www.ine.cl">Instituto Nacional de Estadísticas (INE)</a> en la <a href="https://www.ine.gob.cl/docs/default-source/encuesta-suplementaria-de-ingresos/publicaciones-y-anuarios/s%C3%ADntesis-de-resultados/2021/s%C3%ADntesis-nacional-esi-2021.pdf">Síntesis de Resultados</a> (ver slide abajo) por lo que vamos por buen camino :-)</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ingreso-promedio.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Sitio INE ingreso promedio</figcaption>
+<figcaption>Sitio INE ingreso promedio</figcaption>
 </figure>
 </div>
 <p>Para calcular el sueldo promedio, diferenciando por hombre/mujer, debemos utilizar la variable <code>sexo</code>.</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.720257Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.621997Z&quot;}" data-execution_count="5">
-<details>
+<div id="cell-14" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.720257Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.621997Z&quot;}" data-execution_count="5">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'sexo'</span>] <span class="op">=</span> data[<span class="st">'sexo'</span>].<span class="bu">map</span>({<span class="dv">1</span>: <span class="st">'hombre'</span>, <span class="dv">2</span>: <span class="st">'mujer'</span>})</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ocupados_hombres <span class="op">=</span> data[data[<span class="st">'sexo'</span>] <span class="op">==</span> <span class="st">'hombre'</span>]</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ocupadas_mujeres <span class="op">=</span> data[data[<span class="st">'sexo'</span>] <span class="op">==</span> <span class="st">'mujer'</span>]</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Porcentaje de hombres: </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>ocupados_hombres[<span class="st">'fact_cal_esi'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="op">/</span>n_ocupados<span class="sc">:.1f}</span><span class="ss">%"</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso promedio mensual para hombres: $</span><span class="sc">{</span>ingreso_promedio(ocupados_hombres)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso promedio mensual para hombres: $</span><span class="sc">{</span>ingreso_promedio(ocupados_hombres)<span class="sc">:,.0f}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Porcentaje de mujeres: </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>ocupadas_mujeres[<span class="st">'fact_cal_esi'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="op">/</span>n_ocupados<span class="sc">:.1f}</span><span class="ss">%"</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso promedio mensual para mujeres: $</span><span class="sc">{</span>ingreso_promedio(ocupadas_mujeres)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso promedio mensual para mujeres: $</span><span class="sc">{</span>ingreso_promedio(ocupadas_mujeres)<span class="sc">:,.0f}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Porcentaje de hombres: 58.2%
@@ -443,8 +451,8 @@ Ingreso promedio mensual para mujeres: $586.178</code></pre>
 </div>
 <p>Nuevamente los valores coinciden con los valores entregados por el INE (ver slide arriba).</p>
 <p>Para calcular el sueldo promedio, diferenciando por región, debemos utilizar la variable <code>region</code>:</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.881807Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.728802Z&quot;}" data-execution_count="6">
-<details>
+<div id="cell-17" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:06.881807Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.728802Z&quot;}" data-execution_count="6">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>map_regiones <span class="op">=</span> {</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">"Tarapacá"</span>,</span>
@@ -490,40 +498,40 @@ Ingreso promedio en la Región de Ñuble: $543.780</code></pre>
 </div>
 </div>
 <p>Los valores coinciden con los entregados por el INE (ver slide abajo).</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ingreso-promedio-regiones.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Sitio INE ingreso promedio por regiones</figcaption>
+<figcaption>Sitio INE ingreso promedio por regiones</figcaption>
 </figure>
 </div>
 <p>Para calcular el ingreso mediano (la mitad de las personas ocupadas recibe ingresos menores o iguales al ingreso mediano) para la población total, hombres y mujeres, y por regiones:</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:07.030178Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.888991Z&quot;}" data-execution_count="7">
-<details>
+<div id="cell-21" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:07.030178Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:06.888991Z&quot;}" data-execution_count="7">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ingreso_percentil(data, percentil):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    n_ocupados <span class="op">=</span> data[<span class="st">'fact_cal_esi'</span>].<span class="bu">sum</span>()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    data_ordered <span class="op">=</span> data.sort_values(by<span class="op">=</span><span class="st">"ing_t_p"</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    mediano <span class="op">=</span> data_ordered[data_ordered[<span class="st">"fact_cal_esi"</span>].cumsum()<span class="op">&gt;</span>n_ocupados<span class="op">*</span>percentil<span class="op">/</span><span class="fl">100.</span>][<span class="st">'ing_t_p'</span>].iloc[<span class="dv">0</span>]</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">int</span>(np.<span class="bu">round</span>(mediano))</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano mensual: $</span><span class="sc">{</span>ingreso_percentil(data,<span class="dv">50</span>)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano mensual: $</span><span class="sc">{</span>ingreso_percentil(data,<span class="dv">50</span>)<span class="sc">:,.0f}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ingreso mediano mensual: $457.690</code></pre>
 </div>
 </div>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:07.157956Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:07.033705Z&quot;}" data-execution_count="8">
-<details>
+<div id="cell-22" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:07.157956Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:07.033705Z&quot;}" data-execution_count="8">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano para hombres: $</span><span class="sc">{</span>ingreso_percentil(ocupados_hombres,<span class="dv">50</span>)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano para mujeres: $</span><span class="sc">{</span>ingreso_percentil(ocupadas_mujeres,<span class="dv">50</span>)<span class="sc">:,</span><span class="fl">.0</span><span class="er">f</span><span class="sc">}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano para hombres: $</span><span class="sc">{</span>ingreso_percentil(ocupados_hombres,<span class="dv">50</span>)<span class="sc">:,.0f}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ingreso mediano para mujeres: $</span><span class="sc">{</span>ingreso_percentil(ocupadas_mujeres,<span class="dv">50</span>)<span class="sc">:,.0f}</span><span class="ss">"</span>.replace(<span class="st">','</span>,<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ingreso mediano para hombres: $500.000
 Ingreso mediano para mujeres: $405.348</code></pre>
 </div>
 </div>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:07.406001Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:07.167006Z&quot;}" data-execution_count="9">
-<details>
+<div id="cell-23" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:07.406001Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:07.167006Z&quot;}" data-execution_count="9">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ocupados_regiones <span class="op">=</span> data.groupby(<span class="st">'region'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: ingreso_percentil(x,<span class="dv">50</span>))</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, value <span class="kw">in</span> ocupados_regiones.items():</span>
@@ -549,21 +557,21 @@ Ingreso mediano en la Región de Ñuble: $400.000</code></pre>
 </div>
 </div>
 <p>Dichos valores coinciden con los valores entregados por el INE (ver slides abajo).</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ingreso-mediano.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Sitio INE ingreso mediano</figcaption>
+<figcaption>Sitio INE ingreso mediano</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ingreso-mediano-regiones.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Sitio INE ingreso mediano regiones</figcaption>
+<figcaption>Sitio INE ingreso mediano regiones</figcaption>
 </figure>
 </div>
 <p>De la misma forma como calculamos la mediana podemos calcular los sueldos para todos los percentiles.</p>
-<div class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:19.357017Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:07.414378Z&quot;}" data-execution_count="10">
-<details>
+<div id="cell-28" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2023-04-21T19:34:19.357017Z&quot;,&quot;start_time&quot;:&quot;2023-04-21T19:34:07.414378Z&quot;}" data-execution_count="10">
+<details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -597,7 +605,6 @@ Ingreso mediano en la Región de Ñuble: $400.000</code></pre>
 <span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-
 <div>
         
         
@@ -729,10 +736,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -742,8 +748,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -756,6 +771,120 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -799,6 +928,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -824,6 +954,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -884,6 +1040,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
