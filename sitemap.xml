@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://alonsosilvaallende.github.io/blog/posts/2024-04-11-Build_a_basic_LLM_chat_app_with_Solara.html</loc>
-    <lastmod>2024-04-18T18:18:49.068Z</lastmod>
+    <lastmod>2024-04-19T09:14:08.627Z</lastmod>
   </url>
   <url>
-    <loc>https://alonsosilvaallende.github.io/blog/posts/welcome/index.html</loc>
-    <lastmod>2024-04-11T17:12:55.345Z</lastmod>
-  </url>
-  <url>
-    <loc>https://alonsosilvaallende.github.io/blog/index.html</loc>
-    <lastmod>2024-04-11T17:12:55.093Z</lastmod>
-  </url>
-  <url>
-    <loc>https://alonsosilvaallende.github.io/blog/about.html</loc>
-    <lastmod>2024-04-11T17:12:55.093Z</lastmod>
+    <loc>https://alonsosilvaallende.github.io/blog/posts/2024-04-18-Quarto-Solara-Test.html</loc>
+    <lastmod>2024-04-19T07:42:22.483Z</lastmod>
   </url>
   <url>
     <loc>https://alonsosilvaallende.github.io/blog/posts/observatorio-de-sueldos-en-Chile/2023-04-21-Observatorio-de-sueldos-en-Chile.html</loc>
     <lastmod>2024-04-15T06:50:15.679Z</lastmod>
   </url>
   <url>
-    <loc>https://alonsosilvaallende.github.io/blog/posts/2024-04-18-Quarto-Solara-Test.html</loc>
-    <lastmod>2024-04-18T18:11:46.200Z</lastmod>
+    <loc>https://alonsosilvaallende.github.io/blog/about.html</loc>
+    <lastmod>2024-04-11T17:12:55.093Z</lastmod>
+  </url>
+  <url>
+    <loc>https://alonsosilvaallende.github.io/blog/index.html</loc>
+    <lastmod>2024-04-19T09:12:00.123Z</lastmod>
+  </url>
+  <url>
+    <loc>https://alonsosilvaallende.github.io/blog/posts/welcome/index.html</loc>
+    <lastmod>2024-04-11T17:12:55.345Z</lastmod>
+  </url>
+  <url>
+    <loc>https://alonsosilvaallende.github.io/blog/posts/2024-04-19-Solara_Test.html</loc>
+    <lastmod>2024-04-19T07:54:41.091Z</lastmod>
   </url>
 </urlset>
