@@ -2,7 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2024-04-23-Build_a_basic_widget_with_AnyWidget_in_Solara.html",
       "/posts/2024-04-19-Build_a_basic_LLM_chat_app_with_Solara.html",
+      "/posts/2024-04-19-Solara_Test.html",
+      "/posts/2024-04-18-Quarto-Solara-Test.html",
       "/posts/observatorio-de-sueldos-en-Chile/2023-04-21-Observatorio-de-sueldos-en-Chile.html",
       "/posts/welcome/index.html"
     ]

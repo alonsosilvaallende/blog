@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Alonso Silva">
-<meta name="dcterms.date" content="2024-04-18">
+<meta name="dcterms.date" content="2024-04-23">
 
-<title>blog - Quarto Solara Test</title>
+<title>blog - Build a basic widget with AnyWidget in Solara</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Quarto Solara Test</h1>
+      <h1 class="title">Build a basic widget with AnyWidget in Solara</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">code</div>
                 <div class="quarto-category">analysis</div>
@@ -175,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 18, 2024</p>
+        <p class="date">April 23, 2024</p>
       </div>
     </div>
     
@@ -194,80 +194,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="6f9b3184-bccc-40fc-83b5-461945e47b5d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-19T07:39:17.614076Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-19T07:39:17.613526Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-19T07:39:17.620310Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-19T07:39:17.619269Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-19T07:39:17.614031Z&quot;}" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">### </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">### workaround to import solara</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">###</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># from mock import MagicMock</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># import sys</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># sys.modules['fcntl'] = MagicMock()</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># sys.modules['nest_asyncio'] = MagicMock()</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># import ipyvuetify</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># sys.modules['ipyvuetify.extra'] = MagicMock()</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># # ipyvuetify.extra = MagicMock()</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># import comm</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># old = comm.create_comm</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># comm.create_comm = None</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># comm._create_comm = "Not None"</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># import solara</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># comm.create_comm = old</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># comm._create_comm = None</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># del sys.modules['solara.server']</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># def _using_solara_server():</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">#     return False</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># solara.toestand._using_solara_server = _using_solara_server</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="f5e1bc37-6c72-4ff1-84e4-ea88b5b23143" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-19T07:34:28.927923Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-19T07:34:28.927468Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-19T07:34:28.933793Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-19T07:34:28.932743Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-19T07:34:28.927881Z&quot;}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>4</code></pre>
+<section id="build-a-basic-widget-with-anywidget-in-solara" class="level1">
+<h1>Build a basic widget with AnyWidget in Solara</h1>
+<p>Let’s build the app below (try it out by clicking on the button).</p>
+<div id="9449a473-8be5-4a7f-9a96-db6d87a12977" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-23T15:35:19.473024Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-23T15:35:19.472390Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-23T15:35:19.482380Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-23T15:35:19.481194Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-23T15:35:19.472967Z&quot;}" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="19">
+
+        <iframe width="100%" height="600" src="https://alonsosilva-anywidget-solara.hf.space" frameborder="0" allowfullscreen=""></iframe>
+        
 </div>
 </div>
-<div id="012fff79-9d77-4113-aab0-916c5435792f" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-19T07:34:29.821296Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-19T07:34:29.820878Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-19T07:34:30.157028Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-19T07:34:30.156080Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-19T07:34:29.821258Z&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>])</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2024-04-18-Quarto-Solara-Test_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<p><a href="https://anywidget.dev/">AnyWidget</a> is a Python library that simplifies creating and publishing custom Jupyter Widgets. Since Jupyter Widgets have a VIP treatment in <a href="https://solara.dev/">Solara</a> <span class="emoji" data-emoji="sunny">☀️</span>, we expect them to work especially well. This is indeed the case.</p>
+<p>First things first, let’s install AnyWidget and Solara <span class="emoji" data-emoji="sunny">☀️</span>.</p>
+<pre class="shell" data-code-line-numbers=""><code>$ pip install solara anywidget</code></pre>
+<p>Let’s now take the <a href="https://anywidget.dev/en/getting-started/">starting example</a> from <a href="https://anywidget.dev/">AnyWidget</a>:</p>
+<div id="fa1e2e74-70fa-49ee-91f5-c1a64ddbe728" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-23T15:06:40.341287Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-23T15:06:40.340612Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-23T15:06:40.355054Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-23T15:06:40.353800Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-23T15:06:40.341234Z&quot;}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> anywidget</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> traitlets</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CounterWidget(anywidget.AnyWidget):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    _esm <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="st">    function render({ model, el }) {</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="st">      let getCount = () =&gt; model.get("count");</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">      let button = document.createElement("button");</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">      button.classList.add("counter-button");</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="st">      button.innerHTML = `count is ${getCount()}`;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="st">      button.addEventListener("click", () =&gt; {</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="st">        model.set("count", getCount() + 1);</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="st">        model.save_changes();</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="st">      });</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">      model.on("change:count", () =&gt; {</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st">        button.innerHTML = `count is ${getCount()}`;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="st">      });</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">      el.appendChild(button);</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="st">    export default { render };</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    _css<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="st">    .counter-button { background-color: #ea580c; }</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="st">    .counter-button:hover { background-color: #9a3412; }</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> traitlets.Int(<span class="dv">0</span>).tag(sync<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> CounterWidget()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>To make it more interesting, let’s modify the colors and add some confetti from the <a href="https://www.npmjs.com/package/canvas-confetti">canvas-confetti</a> javascript package.</p>
+<div id="78f8d040-39cb-4808-be1c-f03b485eb409" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-23T15:15:29.116822Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-23T15:15:29.116244Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-23T15:15:29.130248Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-23T15:15:29.129072Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-23T15:15:29.116768Z&quot;}" data-source-line-numbers="6,18,25-26" data-class-source="numberLines" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb3" data-source-line-numbers="6,18,25-26" data-code-line-numbers="6,18,25-26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> anywidget</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> traitlets</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CounterWidget(anywidget.AnyWidget):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    _esm <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">    import confetti from "https://esm.sh/canvas-confetti@1.6.0"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">    function render({ model, el }) {</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">      let getCount = () =&gt; model.get("count");</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">      let button = document.createElement("button");</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">      button.classList.add("counter-button");</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">      button.innerHTML = `count is ${getCount()}`;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">      button.addEventListener("click", () =&gt; {</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">        model.set("count", getCount() + 1);</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">        model.save_changes();</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="st">      });</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="st">      model.on("change:count", () =&gt; {</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="st">        button.innerHTML = `count is ${getCount()}`;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="st">        confetti({ angle: (45*(count()-1)) });</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="st">      });</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="st">      el.appendChild(button);</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="st">    export default { render };</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    _css<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="st">    .counter-button { background:blue; padding:10px 50px;}</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="st">    .counter-button:hover { background-color:green; }</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> traitlets.Int(<span class="dv">0</span>).tag(sync<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> CounterWidget()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div id="2640ad09-70e6-4c09-945b-75732691a594" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-19T07:34:30.856919Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-19T07:34:30.856170Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-19T07:34:30.934080Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-19T07:34:30.933330Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-19T07:34:30.856873Z&quot;}" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> solara</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">@solara.component</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Page():</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    solara.Markdown(<span class="st">"Hello World!"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>Page()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can create our Solara app with just a few lines of code.</p>
+<div id="f90421c0-7bfe-466a-9680-638287ce5718" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-23T15:16:35.592032Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-23T15:16:35.591498Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-23T15:16:35.622553Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-23T15:16:35.621533Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-23T15:16:35.591980Z&quot;}" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> solara</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">@solara.component</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Page():</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> solara.Column(style<span class="op">=</span>{<span class="st">"padding"</span>:<span class="st">"30px"</span>}):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        solara.Markdown(<span class="st">"#Anywidget+Solara"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        counter <span class="op">=</span> CounterWidget()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        counter.element()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Page()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"d6371ae667a74e86a10ebd3f4147bad1","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"60cd4fe17b734fd18ecba36a2b735045","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
-<div id="97372369-0f9c-4c4a-8e38-e676377f7e9e" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-19T07:34:47.644612Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-19T07:34:47.644114Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-19T07:34:47.650055Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-19T07:34:47.648773Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-19T07:34:47.644569Z&quot;}" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># page = Page()</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># from ipywidgets.embed import embed_minimal_html</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># embed_minimal_html('export.html', views=[page], title='Widgets export')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ce9cc167-006d-4a6a-8671-2c7df6021c87" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-23T15:18:36.340055Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-23T15:18:36.339493Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-23T15:18:36.349163Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-23T15:18:36.347994Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-23T15:18:36.340004Z&quot;}" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="18">
+
+        <iframe width="100%" height="600" src="https://alonsosilva-anywidget-solara.hf.space" frameborder="0" allowfullscreen=""></iframe>
+        
 </div>
+</div>
+<p>Try to generate some other confetti animations from <a href="https://www.kirilv.com/canvas-confetti/">here</a> or from your own creation!</p>
 
 
+</section>
 
 </main> <!-- /main -->
-<script type="application/vnd.jupyter.widget-state+json">
-{"state":{"18a361951fb642a4b56dcf1137645eb7":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"29e670a23a5343b1967c8352729e5e95":{"model_module":"jupyter-vuetify","model_module_version":"^1.8.5","model_name":"RowModel","state":{"_events":[],"_jupyter_vue":"IPY_MODEL_cf42254bcc4946e2ab316c4d20f9af67","attributes":{},"children":["IPY_MODEL_4cb8a02aa534428a863d4123243e1840"],"class_":"solara-content-main","layout":null,"no_gutters":false,"v_slots":[]}},"3086dbd9c35f482cb6222c1dec9e385b":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"VBoxModel","state":{"_view_count":1,"children":["IPY_MODEL_98b569593401453b8abfb2e90a5b7f89"],"layout":"IPY_MODEL_5c4d33d38aa94a7e925ba81399e594f7"}},"3973bc0a9091440b86685b48a1bf02d8":{"model_module":"jupyter-vuetify","model_module_version":"^1.8.10","model_name":"ThemeColorsModel","state":{"_model_module_version":"^1.8.10","_theme_name":"light","_view_module":null,"_view_module_version":"^1.8.10","accent":"#82B1FF","error":"#FF5252","info":"#2196F3","primary":"#1976D2","secondary":"#424242","success":"#4CAF50","warning":"#FB8C00"}},"4cb8a02aa534428a863d4123243e1840":{"model_module":"jupyter-vuetify","model_module_version":"^1.8.5","model_name":"ColModel","state":{"_events":[],"_jupyter_vue":"IPY_MODEL_cf42254bcc4946e2ab316c4d20f9af67","attributes":{},"children":["IPY_MODEL_5d85adf81c544e95b1dd363b6d378772"],"cols":12,"layout":null,"lg":null,"md":null,"offset":null,"offset_lg":null,"offset_md":null,"offset_sm":null,"offset_xl":null,"order":null,"order_lg":null,"order_md":null,"order_sm":null,"order_xl":null,"sm":null,"v_slots":[],"xl":null}},"5c4d33d38aa94a7e925ba81399e594f7":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"5d85adf81c544e95b1dd363b6d378772":{"model_module":"jupyter-vuetify","model_module_version":"^1.8.10","model_name":"VuetifyTemplateModel","state":{"_component_instances":[],"_jupyter_vue":"IPY_MODEL_cf42254bcc4946e2ab316c4d20f9af67","_model_module_version":"^1.8.10","_view_module_version":"^1.8.10","components":null,"events":[],"layout":"IPY_MODEL_18a361951fb642a4b56dcf1137645eb7","template":"\n<template>\n    <div class=\"solara-markdown rendered_html jp-RenderedHTMLCommon\" style=\"\"><p>Hello World!</p></div>\n</template>\n\n<script>\nmodule.exports = {\n    async mounted() {\n        await this.loadRequire();\n        this.mermaid = await this.loadMermaid();\n        this.mermaid.init();\n        this.latexSettings = {\n                delimiters: [\n                    {left: \"$$\", right: \"$$\", display: true},\n                    {left: \"$\", right: \"$\", display: false},\n                    {left: \"\\\\[\", right: \"\\\\]\", display: true},\n                    {left: \"\\\\(\", right: \"\\\\)\", display: false}\n                ]\n            };\n        if (window.renderMathInElement) {\n            window.renderMathInElement(this.$el, this.latexSettings);\n        } else if (window.MathJax && MathJax.Hub) {\n            MathJax.Hub.Queue(['Typeset', MathJax.Hub, this.$el]);\n        } else {\n            window.renderMathInElement = await this.loadKatexExt();\n            window.renderMathInElement(this.$el, this.latexSettings);\n        }\n        this.$el.querySelectorAll(\"a\").forEach(a => this.setupRouter(a))\n        window.md = this.$el\n    },\n    methods: {\n        setupRouter(a) {\n            let href = a.attributes['href'].value;\n            if(href.startsWith(\"./\")) {\n                // TODO: should we really do this?\n                href = location.pathname + href.substr(1);\n                a.attributes['href'].href = href;\n            }\n            if(href.startsWith(\"./\") || href.startsWith(\"/\")) {\n                a.onclick = e => {\n                    console.log(\"clicked\", href)\n                    if(href.startsWith(\"./\")) {\n                        solara.router.push(href);\n                    } else {\n                        solara.router.push(href);\n                    }\n                    e.preventDefault()\n                }\n            } else if(href.startsWith(\"#\")) {\n                href = location.pathname + href;\n                a.attributes['href'].value = href;\n            } else {\n                console.log(\"href\", href, \"is not a local link\")\n            }\n        },\n        async loadKatex() {\n            require.config({\n                map: {\n                    '*': {\n                        'katex': `${this.getCdn()}/katex@0.16.9/dist/katex.min.js`,\n                    }\n                }\n            });\n            const link = document.createElement('link');\n            link.type = \"text/css\";\n            link.rel = \"stylesheet\";\n            link.href = `${this.getCdn()}/katex@0.16.9/dist/katex.min.css`;\n            document.head.appendChild(link);\n        },\n        async loadKatexExt() {\n            this.loadKatex();\n            return (await this.import([`${this.getCdn()}/katex@0.16.9/dist/contrib/auto-render.min.js`]))[0]\n        },\n        async loadMermaid() {\n            return (await this.import([`${this.getCdn()}/mermaid@10.8.0/dist/mermaid.min.js`]))[0]\n        },\n        import(dependencies) {\n            return this.loadRequire().then(\n                () => {\n                    if (window.jupyterVue) {\n                        // in jupyterlab, we take Vue from ipyvue/jupyterVue\n                        define(\"vue\", [], () => window.jupyterVue.Vue);\n                    } else {\n                        define(\"vue\", ['jupyter-vue'], jupyterVue => jupyterVue.Vue);\n                    }\n                    return new Promise((resolve, reject) => {\n                        requirejs(dependencies, (...modules) => resolve(modules));\n                    })\n                }\n            );\n        },\n        loadRequire() {\n            if (window.requirejs) {\n                return Promise.resolve();\n            }\n            return new Promise((resolve, reject) => {\n                const script = document.createElement('script');\n                script.src = `${this.getCdn()}/requirejs@2.3.6/require.min.js`;\n                script.onload = resolve;\n                script.onerror = reject;\n                document.head.appendChild(script);\n            });\n        },\n        getBaseUrl() {\n            if (window.solara && window.solara.rootPath !== undefined) {\n                return solara.rootPath + \"/\";\n            }\n            // if base url is set, we use ./ for relative paths compared to the base url\n            if (document.getElementsByTagName(\"base\").length) {\n                return \"./\";\n            }\n            const labConfigData = document.getElementById('jupyter-config-data');\n            if (labConfigData) {\n                /* lab and Voila */\n                return JSON.parse(labConfigData.textContent).baseUrl;\n            }\n            let base = document.body.dataset.baseUrl || document.baseURI;\n            if (!base.endsWith('/')) {\n                base += '/';\n            }\n            return base\n        },\n        getCdn() {\n            return this.cdn || (typeof solara_cdn !== \"undefined\" && solara_cdn) || `${this.getBaseUrl()}_solara/cdn`;\n        }\n    },\n    updated() {\n        // if the html gets update, re-run mermaid\n        this.mermaid.init();\n\n        if(window.MathJax && MathJax.Hub) {\n            MathJax.Hub.Queue(['Typeset', MathJax.Hub, this.$el]);\n        } else {\n            window.renderMathInElement(this.$el, this.latexSettings);\n        }\n    }\n}\n</script>\n    "}},"65b3cf8dbecb48a08076d16eecb2b98d":{"model_module":"jupyter-vuetify","model_module_version":"^1.8.10","model_name":"ThemeColorsModel","state":{"_model_module_version":"^1.8.10","_theme_name":"dark","_view_module":null,"_view_module_version":"^1.8.10","accent":"#FF4081","error":"#FF5252","info":"#2196F3","primary":"#2196F3","secondary":"#424242","success":"#4CAF50","warning":"#FB8C00"}},"8f96225f9fab4c2d9f305a1b44078c4e":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{}},"98b569593401453b8abfb2e90a5b7f89":{"model_module":"jupyter-vuetify","model_module_version":"^1.8.10","model_name":"HtmlModel","state":{"_events":[],"_jupyter_vue":"IPY_MODEL_cf42254bcc4946e2ab316c4d20f9af67","_model_module_version":"^1.8.10","_view_module_version":"^1.8.10","attributes":{},"children":["IPY_MODEL_29e670a23a5343b1967c8352729e5e95"],"layout":null,"tag":"div","v_slots":[]}},"cf42254bcc4946e2ab316c4d20f9af67":{"model_module":"jupyter-vue","model_module_version":"^1.10.1","model_name":"ForceLoadModel","state":{"_model_module_version":"^1.10.1","_view_module":null,"_view_module_version":"","layout":"IPY_MODEL_8f96225f9fab4c2d9f305a1b44078c4e"}},"d69682f8db934482b30f04292774fc7e":{"model_module":"jupyter-vuetify","model_module_version":"^1.8.10","model_name":"ThemeModel","state":{"_model_module_version":"^1.8.10","_view_module":null,"_view_module_version":"^1.8.10"}}},"version_major":2,"version_minor":0}
-
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
