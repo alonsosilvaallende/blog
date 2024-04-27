@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>To make it more interesting, let’s modify our <code>CounterWidget</code> by changing the <code>_css</code> and adding some confetti from the <a href="https://www.npmjs.com/package/canvas-confetti">canvas-confetti</a> javascript package.</p>
-<div id="28e5e1e8-02a9-4f60-8290-69f8b3ee23fd" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-27T06:07:21.892719Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-27T06:07:21.892175Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-27T06:07:21.923922Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-27T06:07:21.923039Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-27T06:07:21.892669Z&quot;}" data-source-line-numbers="6,18,24-27" data-class-source="numberLines" data-execution_count="9">
+<div id="28e5e1e8-02a9-4f60-8290-69f8b3ee23fd" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-27T07:16:07.224054Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-27T07:16:07.222966Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-27T07:16:07.251705Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-27T07:16:07.250771Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-27T07:16:07.223991Z&quot;}" data-source-line-numbers="6,18,24-27" data-class-source="numberLines" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb4" data-source-line-numbers="6,18,24-27" data-code-line-numbers="6,18,24-27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> anywidget</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> traitlets</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -304,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="st">      });</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="st">      model.on("change:count", () =&gt; {</span></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="st">        button.innerHTML = `count is ${getCount()}`;</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="st">        confetti({ angle: (45*(count()-1)) });</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="st">        confetti({ angle: (45*(getCount()-1)) });</span></span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="st">      });</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="st">      el.appendChild(button);</span></span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
@@ -325,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>Page()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"c38a9c331b264bfdb158c5bf338aef5a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"b2324c0ba1d44beba9ccd63267c6a68a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
@@ -337,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If you want to access the value of the <code>CounterWidget</code> counter, we can do it through a reactive variable (thanks to <a href="https://twitter.com/johnowhitaker">Jonathan</a> and <a href="https://twitter.com/maartenbreddels">Maarten</a> for this suggestion):</p>
-<div id="dae1d607-f498-4c05-a1d0-909c717f7029" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-27T06:12:12.615850Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-27T06:12:12.615315Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-27T06:12:12.648979Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-27T06:12:12.647982Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-27T06:12:12.615800Z&quot;}" data-source-line-numbers="31,36-37" data-class-source="numberLines" data-execution_count="11">
+<div id="dae1d607-f498-4c05-a1d0-909c717f7029" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-27T07:19:09.431943Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-27T07:19:09.431397Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-27T07:19:09.465057Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-27T07:19:09.464450Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-27T07:19:09.431891Z&quot;}" data-source-line-numbers="31,36-37" data-class-source="numberLines" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb5" data-source-line-numbers="31,36-37" data-code-line-numbers="31,36-37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> anywidget</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> traitlets</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -355,7 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="st">      });</span></span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">      model.on("change:count", () =&gt; {</span></span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="st">        button.innerHTML = `count is ${getCount()}`;</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="st">        confetti({ angle: (45*(count()-1)) });</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="st">        confetti({ angle: (45*(getCount()-1)) });</span></span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="st">      });</span></span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="st">      el.appendChild(button);</span></span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
@@ -373,12 +373,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Page():</span>
 <span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> solara.Column(style<span class="op">=</span>{<span class="st">"padding"</span>:<span class="st">"30px"</span>}):</span>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        solara.Markdown(<span class="st">"#Anywidget+Solara"</span>)</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        CounterWidget.element(value<span class="op">=</span>counter.value, on_value<span class="op">=</span>counter.<span class="bu">set</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        CounterWidget.element(count<span class="op">=</span>counter.value, on_count<span class="op">=</span>counter.<span class="bu">set</span>)</span>
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        solara.Markdown(<span class="ss">f"## Counter value is </span><span class="sc">{</span>counter<span class="sc">.</span>value<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>Page()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"227549b52ef94855bb31ff79cf2febe9","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"dee2dc01839949a5af918e04115c8a7d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
@@ -386,6 +386,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display" data-execution_count="24">
 
         <iframe width="100%" height="600" src="https://app.py.cafe/snippet/solara/v1?c=H4sIAPiPLGYAA5VUUWvbMBD-K0Ldg72masPWPXhkdJTCBi0MVrYXQarYl0RUOXmSnDQE__edZTt1ku5hCgRL-r677053t-O5LYBnXKJeldYFpnC70cUCwv4kOKWDgeAlSsyN8p7d2goDuN8RmOwp4itu27M0k8hoTcGv2IRJHn_xqFmd5dziHELQbO7sikDLEEqfXV4SSfjlZa5wrfxFj7oZi0_iamhmXmEetEXmAAtwyY6tKBozYmBYnbLdK5IxCoD8kWySk6Rs8qXFiiYAydfKVCB5-vmYMgtIhMLm1QowiNyBCnBnoNkRb1aFYPGYSCShEcF9e3y4J_pT61h79m4XP5O0fjphxNTeax-EKgqyHZHgLujuLQcEuluTioYB5KthGJ0_Sz7qAjyIn3Xx-mG8ozYlBD9n40MXe7xawzRfKlyATw4h9eG2xVtshER8tvfypp7_zxLbVww9NXkwkLHk4_X7pINfjNP0WNXRlhSqsqRyuV1qUySkYXhfv37CSyzRAuaqMoHtuhpjdQcflvQ0p544rXIxeMGT4FX-vHB0X2QzStJRmCU9rsZFNr4qX9g1_b2tceggW9o1yfunG2ojY122cAB4am0oPb4ahbPve_GdknuViqAWid9iPnl0FaTNNOj62FujnIrjoRVE7PZMUL9Qi66B-BJvusPcEg-pdiWldM5-qAUk_cTY6LDsybfWVCtMfNgamOwk79IieSb5B8qK5HVPa1bHelDuubCbpg7PaCC1o-n8Z6uRk4wefzDFBHRNHcOfdIGIuBsxi9PDc2qjgaVjz3Nyfdbb7xJKdd2WdW-1jmLa4PmIO_hTaRc1eBrIgzlMl2FbNlO69UN7quFfGjY8C_QUIw6FDneoZoZAzUn9F_lrq5LYBQAA" frameborder="0" allowfullscreen=""></iframe>
+        
+</div>
+</div>
+<p>We can add a slider from <a href="https://ipywidgets.readthedocs.io/en/stable/">Jupyter Widgets</a> and link it to the <code>CounterWidget</code> counter.</p>
+<div id="240ec190-2400-47f7-a65c-a112f654d42d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-27T07:29:58.862123Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-27T07:29:58.861397Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-27T07:29:58.889967Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-27T07:29:58.889493Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-27T07:29:58.862049Z&quot;}" data-source-line-numbers="31,38" data-class-source="numberLines" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="31,38" data-code-line-numbers="31,38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> anywidget</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> traitlets</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CounterWidget(anywidget.AnyWidget):</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    _esm <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">    import confetti from "https://esm.sh/canvas-confetti@1.6.0"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">    function render({ model, el }) {</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">      let getCount = () =&gt; model.get("count");</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">      let button = document.createElement("button");</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">      button.classList.add("counter-button");</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">      button.innerHTML = `count is ${getCount()}`;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">      button.addEventListener("click", () =&gt; {</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="st">        model.set("count", getCount() + 1);</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="st">        model.save_changes();</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="st">      });</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="st">      model.on("change:count", () =&gt; {</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="st">        button.innerHTML = `count is ${getCount()}`;</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="st">        confetti({ angle: getCount() });</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="st">      });</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="st">      el.appendChild(button);</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="st">    export default { render };</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    _css<span class="op">=</span><span class="st">"""</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="st">    .counter-button { background:blue; padding:10px 50px;}</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="st">    .counter-button:hover { background-color:green; }</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> traitlets.Int(<span class="dv">0</span>).tag(sync<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> solara</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets <span class="im">as</span> widgets</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> solara.reactive(<span class="dv">0</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="at">@solara.component</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Page():</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> solara.Column(style<span class="op">=</span>{<span class="st">"padding"</span>:<span class="st">"30px"</span>}):</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>        solara.Markdown(<span class="st">"#Anywidget+Solara"</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>        CounterWidget.element(count<span class="op">=</span>counter.value, on_count<span class="op">=</span>counter.<span class="bu">set</span>)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>        widgets.IntSlider.element(<span class="bu">min</span><span class="op">=-</span><span class="dv">180</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">180</span>, value<span class="op">=</span>counter.value, on_value<span class="op">=</span>counter.<span class="bu">set</span>)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>        solara.Markdown(<span class="ss">f"## Counter value is </span><span class="sc">{</span>counter<span class="sc">.</span>value<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>Page()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"3761b3372484471a86f67f46c8832b7d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div id="9d40e943-96e9-403e-8009-8adb4c2b3301" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-27T07:33:37.837964Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-27T07:33:37.837264Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-27T07:33:37.848745Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-27T07:33:37.847365Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-27T07:33:37.837905Z&quot;}" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="19">
+
+        <iframe width="100%" height="600" src="https://app.py.cafe/snippet/solara/v1?c=H4sIADmpLGYAA51UUWvbMBD-K4e6B4embsLYGA4eHaWwQQuDlu3FkCr2JRGVJU-Sk4bg_76zJTtOt73MgVg-fffdd6c7HVmuC2QJE2WljQOuDntRbNBlKlic4cJJdDZTmcoltxZuda0cmp8dMBpc4i_q4G2TJFNAzxJtCSlkrPt1psCaa7VG5wSsjS4JsHWussn1NTnEdnudc7Xj9qpH3czjj_Gsp1jXKndCKzCoCjTREUrKQU4BJTQTOHoUAIkGEtOpJRXRBNLPHhq3ujNKnXYyNlmMPVa1c8SdQqHzukTl4twgd3gnsf0iN48Y-3lL3FXnXlgX86Lo-dFc_dNBKIXm69PDPYV77tAgLLw79qqjSfP81oeo73YkpI2D5N7GkSJ_ydg0pDgUAEK2dpztdKgJoS9hfhI1wPkOl_mWqw3a6LTdnJYep1XL2uGSgfwPCf-TKgz9QYdL_BKTseqRktGSFPGqopa43QpZRD5uv934F7523VfgmtfSwTG0EDQBNu7UZW5tOjbE5-dJ3iuev2wMWYtkJWtcQEWnI9Qmmc-qV_hAf4sQ-I1vstU7CjtmoGaX2iQbg6gWvd5xeF-09DSQ8TeqxmwSO76J7EHl6ZOpcdKOaRgyqyU3fPgUVRhUC9xCWNJMe2XE7PExtTvN1w6JO1M3wZhrIlHUdxkVbA3f-Qajfsz3wm1751st61JF1h0kpseMhYpkLMnYeypIxprerX2C1wM3L4Xetw11QbeI13b56PUzktHjz66eGMNMdimkIZF4x-kspqDV8txOYzBiCvm3RXyUgppgYCuFSq_mn2ZTKPlr2i06yr8EOLefB3ib2ppyu-gT8IztCBzPWJsuW19dNmUGf9XCdLIsXdKj25k23aFqb24fh76p-38I3LPEUR9MGRbC3Sm-kgRqLc1vN6GYrewFAAA" frameborder="0" allowfullscreen=""></iframe>
         
 </div>
 </div>
