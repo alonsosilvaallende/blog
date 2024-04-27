@@ -336,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         
 </div>
 </div>
-<p>If you want to access the value of the <code>CounterWidget</code> counter, we can do it through a reactive variable (thanks to <a href="https://twitter.com/johnowhitaker">Jonathan</a> and <a href="https://twitter.com/maartenbreddels">Maarten</a> for this suggestion):</p>
+<p>If you want to access the value of the <code>CounterWidget</code> counter, we can do it through a reactive variable <code>counter</code> (thanks to <a href="https://twitter.com/johnowhitaker">Jonathan</a> and <a href="https://twitter.com/maartenbreddels">Maarten</a> for this suggestion):</p>
 <div id="dae1d607-f498-4c05-a1d0-909c717f7029" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-27T07:56:15.940719Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-27T07:56:15.939995Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-27T07:56:15.971602Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-27T07:56:15.970706Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-27T07:56:15.940644Z&quot;}" data-source-line-numbers="31,36-37" data-class-source="numberLines" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb5" data-source-line-numbers="31,36-37" data-code-line-numbers="31,36-37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> anywidget</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> traitlets</span>
@@ -389,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         
 </div>
 </div>
-<p>We can add a slider from <a href="https://ipywidgets.readthedocs.io/en/stable/">Jupyter Widgets</a> and link it to the <code>CounterWidget</code> counter.</p>
+<p>We can add a slider from <a href="https://ipywidgets.readthedocs.io/en/stable/">Jupyter Widgets</a> and link it to the reactive variable <code>counter</code>.</p>
 <div id="240ec190-2400-47f7-a65c-a112f654d42d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2024-04-27T07:29:58.862123Z&quot;,&quot;iopub.status.busy&quot;:&quot;2024-04-27T07:29:58.861397Z&quot;,&quot;iopub.status.idle&quot;:&quot;2024-04-27T07:29:58.889967Z&quot;,&quot;shell.execute_reply&quot;:&quot;2024-04-27T07:29:58.889493Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2024-04-27T07:29:58.862049Z&quot;}" data-source-line-numbers="31,38" data-class-source="numberLines" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb6" data-source-line-numbers="31,38" data-code-line-numbers="31,38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> anywidget</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> traitlets</span>
@@ -444,7 +444,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         
 </div>
 </div>
-<p>And that’s all. You can generate some other confetti animations from <a href="https://www.kirilv.com/canvas-confetti/">here</a>. Create your own widgets and add them to your Solara app.</p>
+<p>And that’s all. You can generate some other confetti animations from <a href="https://www.kirilv.com/canvas-confetti/">here</a>. Create your own widgets with <a href="https://anywidget.dev/">AnyWidget</a> or use widgets from <a href="https://ipywidgets.readthedocs.io/en/stable/">Jupyter Widgets</a> or <a href="https://solara.dev/">Solara</a> itself and add them to your <a href="https://solara.dev/">Solara</a> app.</p>
 
 
 </section>
