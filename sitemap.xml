@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://alonsosilvaallende.github.io/blog/posts/2024-04-23-Build_a_basic_widget_with_AnyWidget_in_Solara.html</loc>
-    <lastmod>2024-04-23T16:37:22.607Z</lastmod>
-  </url>
-  <url>
     <loc>https://alonsosilvaallende.github.io/blog/posts/2024-04-19-Build_a_basic_LLM_chat_app_with_Solara.html</loc>
-    <lastmod>2024-04-23T14:39:18.479Z</lastmod>
+    <lastmod>2024-04-24T10:34:55.098Z</lastmod>
   </url>
   <url>
-    <loc>https://alonsosilvaallende.github.io/blog/posts/welcome/index.html</loc>
-    <lastmod>2024-04-11T17:12:55.345Z</lastmod>
+    <loc>https://alonsosilvaallende.github.io/blog/posts/2024-04-23-Build_a_basic_widget_with_AnyWidget.html</loc>
+    <lastmod>2024-04-27T04:48:08.861Z</lastmod>
   </url>
   <url>
     <loc>https://alonsosilvaallende.github.io/blog/index.html</loc>
@@ -25,11 +21,7 @@
     <lastmod>2024-04-15T06:50:15.679Z</lastmod>
   </url>
   <url>
-    <loc>https://alonsosilvaallende.github.io/blog/posts/2024-04-18-Quarto-Solara-Test.html</loc>
-    <lastmod>2024-04-20T14:10:19.513Z</lastmod>
-  </url>
-  <url>
-    <loc>https://alonsosilvaallende.github.io/blog/posts/2024-04-19-Solara_Test.html</loc>
-    <lastmod>2024-04-20T14:10:23.761Z</lastmod>
+    <loc>https://alonsosilvaallende.github.io/blog/posts/welcome/index.html</loc>
+    <lastmod>2024-04-11T17:12:55.345Z</lastmod>
   </url>
 </urlset>
